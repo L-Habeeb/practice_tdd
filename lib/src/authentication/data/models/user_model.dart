@@ -51,34 +51,3 @@ class UserModel extends User {
 
   String toJson() => json.encode(toMap());
 }
-
-  // factory UserModel.fromJson(String source) =>
-  //     UserModel.fromMap(json.decode(source));
-  // factory UserModel.fromJson(String source) => UserModel.fromMap(json.decode(source) as DataMap);
-
-  // Map<String, dynamic> toMap() {
-  //   return {'id': id, 'createdAt': createdAt, 'avatar': avatar, 'name': name};
-  // }
-
-  // factory UserModel.fromMap(Map<String, dynamic> map) {
-  //   return UserModel(
-  //     id: map['id'] ?? '',
-  //     createdAt: map['createdAt'] ?? '',
-  //     avatar: map['avatar'] ?? '',
-  //     name: map['name'] ?? '',
-  //   );
-  // }
-
-  // String toJson() => json.encode(toMap());
-
-  // DataMap toMap() => {
-  //   id: id,
-  //   createdAt: createdAt,
-  //   avatar: avatar,
-  //   name: name,
-  // };
-
-  // @override
-  // String toString() {
-  //   return 'User(id: $id, createdAt: $createdAt, avatar: $avatar, name: $name)';
-  // }
