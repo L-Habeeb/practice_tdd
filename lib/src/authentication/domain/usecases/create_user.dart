@@ -4,7 +4,6 @@ import 'package:practice_tdd/core/utils/typedef.dart';
 import 'package:practice_tdd/src/authentication/domain/repositories/auth_repository.dart';
 
 class CreateUser extends UsecaseWithParams<void, CreateUserParams> {
-  // Expects an ImplementationAuthenticationRepository
   const CreateUser(this._repository);
 
   final AuthenticationRepository _repository;
@@ -16,10 +15,6 @@ class CreateUser extends UsecaseWithParams<void, CreateUserParams> {
         name: params.name,
         avatar: params.avatar,
       );
-
-  // ImplementationAuthenticationRepository as createUser which requires
-  // createdAt, name, avatar,
-
 }
 
 

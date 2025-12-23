@@ -15,7 +15,7 @@ class AuthenticationBloc
       _getUser = getUser,
       super(const AuthenticationInitial()) {
     on<CreateUserEvent>(_createUserHandler);
-    on<GetUsersEvent>(_getUserHandler);
+    on<GetUsersEvent>(_getUsersHandler);
   }
 
   final CreateUser _createUser;
@@ -36,13 +36,21 @@ class AuthenticationBloc
     );
 
     result.fold(
-      (failure) => emit(
-        AuthenticationError(
-          '${failure.statusCode} '
-          'Error: ${failure.message}',
-        ),
-      ),
+      (failure) => emit(AuthenticationError(failure.errorMessage)),
       (_) => emit(const UserCreated()),
+    );
+  }
+
+  Future<void> _getUsersHandler(
+    GetUsersEvent event,
+    Emitter<AuthenticationState> emit,
+  ) async {
+    emit(const GettingUsersState());
+    final result = await _getUser();
+
+    result.fold(
+      (failure) => emit(AuthenticationError(failure.errorMessage)),
+      (users) => emit(UsersLoaded(users)),
     );
   }
 }
