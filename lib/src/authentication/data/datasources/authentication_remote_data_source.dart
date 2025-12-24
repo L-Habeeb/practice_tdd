@@ -17,6 +17,7 @@ abstract class AuthenticationRemoteDataSource {
   Future<List<UserModel>> getUser();
 }
 
+
 class AuthRemoteDataSourceImpl implements AuthenticationRemoteDataSource {
   final http.Client _client;
 
@@ -36,6 +37,9 @@ class AuthRemoteDataSourceImpl implements AuthenticationRemoteDataSource {
           'name': name,
           'avatar': avatar,
         }),
+        headers: {
+          'content-type': 'application/json'
+        }
       );
       if (response.statusCode != 200 && response.statusCode != 201) {
         throw APIException(
